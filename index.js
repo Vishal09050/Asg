@@ -1,25 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const transactionRoutes = require('./routes/transactionRoutes');
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const app = express();
-const PORT = 8000;
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-app.use(cors());
-
-
-// Middlewares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-// Database Connection
-connectDB();
-
-// Routes
-app.use('/api', transactionRoutes);
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
